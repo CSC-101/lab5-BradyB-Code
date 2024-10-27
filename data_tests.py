@@ -1,3 +1,6 @@
+from idlelib.pyshell import restart_line
+from unittest import expectedFailure
+
 import data
 import unittest
 
@@ -19,11 +22,32 @@ class TestCases(unittest.TestCase):
 
 
     #### Add tests for Time.__eq__
+    def test_Time_eq_1(self):
+        input1 = data.Time(2, 15, 30)
+        input2 = data.Time(2, 15, 30)
+        result = (input1 == input2)
+        expected = True
+        self.assertEqual(expected, result)
+
+    def test_Time_eq_2(self):
+        input3 = data.Time(2, 25, 5)
+        input4 = data.Time(1, 25, 5)
+        result = (input3 == input4)
+        expected = False
+        self.assertEqual(expected, result)
 
     #### Add tests for Time.__repr__
+    def test_Time_repr_1(self):
+        input = data.Time(15, 10, 0)
+        result = input.__repr__()
+        expected = "Time(Hour: 15, Minute: 10, Second: 0)"
+        self.assertEqual(expected, result)
 
-
-
+    def test_Time_repr_2(self):
+        input = data.Time(4, 23, 8)
+        result = input.__repr__()
+        expected = "Time(Hour: 4, Minute: 23, Second: 8)"
+        self.assertEqual(expected, result)
 
     #### Point tests
     def test_Point_1(self):
